@@ -2,10 +2,16 @@
 //
 
 #include <iostream>
+#include <string>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int idNumber = 30003823;
+	double balance = 73.96;
+	string name = "Karol Suarez";
+
+	cout << "ID "
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
