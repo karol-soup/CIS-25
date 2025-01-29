@@ -2,7 +2,9 @@
 
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
 using namespace std;
+
 
 int main() {
 
@@ -17,12 +19,24 @@ int main() {
 
 		cout << "Enter the operation you would like to use (Please enter one of the following, +, -, /, *): ";
 		cin >> operand;
-
-
+		if(operand !=  '+' && operand != '-' && operand != '/' && operand != '*') {
+			cout << "Input invalid, try again";
+			exit(1);
+		}
+		
 		cout << endl << "Enter your first number: ";
-		cin >> first_num;
+		while (!(cin >> first_num)) {
+			cout << "Input invalid, try again";
+			exit(1);
+		}
+
+
 		cout << "Enter your second number: ";
-		cin >> second_num;
+
+		while (!(cin >> second_num)) {
+			cout << "Input invalid, try again";
+			exit(1);
+		}
 
 		switch (operand) {
 		case '+':
@@ -32,13 +46,17 @@ int main() {
 			cout << first_num - second_num;
 			break;
 		case '/':
-			cout << first_num / second_num;
+			if (second_num == 0 || first_num == 0) {
+				cout << "Cannot divide by zero, try again";
+			}
+			else
+				cout << first_num / second_num;
 			break;
 		case'*':
 			cout << first_num * second_num;
 			break;
 		default:
-			cout << "The input entered was invalid";
+			cout << "The input entered was invalid, ";
 
 		}
 
