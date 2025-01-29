@@ -1,0 +1,11 @@
+﻿  hdgjklhdfjk.cpp
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(20,36): error C2059: syntax error: ';'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(31,8): error C2059: syntax error: 'if'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(31,23): error C2143: syntax error: missing ';' before '{'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(31,23): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(39,8): error C2059: syntax error: 'else'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(39,13): error C2143: syntax error: missing ';' before '{'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(39,13): error C2447: '{': missing function header (old-style formal list?)
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(45,9): error C2059: syntax error: 'return'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(47,1): error C2059: syntax error: '}'
+C:\Users\karol\OneDrive\Desktop\CIS-25\hdgjklhdfjk\hdgjklhdfjk\hdgjklhdfjk.cpp(47,1): error C2143: syntax error: missing ';' before '}'
