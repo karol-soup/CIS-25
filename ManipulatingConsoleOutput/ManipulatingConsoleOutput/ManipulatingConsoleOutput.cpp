@@ -2,25 +2,30 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
 int main()
 {
-	int idNumber = 30003823;
+	int idNumber = 00001;
 	double balance = 73.96;
-	string name = "Karol Suarez";
+	string name = "Karol";
 
-	cout << "ID "
+	int idNumber2 = 00002;
+	double balance2 = 100.06;
+	string name2 = "Carly";
+
+	
+		cout << setw(30) << "Daily Report" << endl;//; pushes daily report to the right
+		cout << left << setw(10) << "ID" << setw(10) << "Name" << setw(10) << "Balance" << endl;//pushes output to the left
+		cout << left << setw(10) << "----" << setw(10) << "------" << setw(10) << "------" << endl;// by making setw() the smae we ensure l the output is alligned
+		cout << left << setw(10) << idNumber << setw(10) << name << "$" << balance << endl;//displays output
+		cout << left << setw(10) << idNumber2 << setw(10) << name2 << "$" << balance2 << endl;
+
+		return 0;
+	
+
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
