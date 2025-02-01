@@ -21,7 +21,7 @@ const double conversionRates[4][4]{// rows = from, colums = to
 	(1 / JPY),(1 / JPY) * EUR,(1 / JPY) * GBP,1
 };
 
-double convertcurrency(double amount, double rate) { // pass amount and the rate which is in the array
+double convertCurrency(double amount, double rate) { // pass amount and the rate which is in the array
 	return (amount * rate);
 }
 
@@ -69,7 +69,7 @@ int main()
 		return -1;
 	}
 
-	double convertedAmount = convertcurrency(amount, conversionRates[fromIndex][toIndex]); // calling the function
+	double convertedAmount = convertCurrency(amount, conversionRates[fromIndex][toIndex]); // calling the function
 	cout << fixed << setprecision(2);
 	cout << amount << " " << initialCurrency << " is " << convertedAmount << " " << toCurrency << endl << endl;
 	
@@ -79,7 +79,7 @@ int main()
 	cout << "Enter the promotional rate from " << initialCurrency << " to " << toCurrency << endl;
 	cin >> pRate;
 
-	convertedAmount = convertcurrency(amount, pRate);// pass amount and new rate
+	convertedAmount = convertCurrency(amount, pRate);// pass amount and new rate
 	cout << "Adjusted with promotional rate ";
 	cout << fixed << setprecision(2);
 	cout << amount << " " << initialCurrency << " is " << convertedAmount << " " << toCurrency << endl << endl;
