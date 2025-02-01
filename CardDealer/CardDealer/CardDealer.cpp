@@ -12,10 +12,10 @@ int main()
 
 	srand(time(0));
 
-	cout << setfill('*') << setw(40)<<" " << endl << endl;
+	cout << setfill('*') << setw(40) <<" " << endl << endl;
 
-	cout << left << setw(11) << "Casino Card:"<< setfill('-') //setfill to reset the fill characters
-		<< setfill('-')<<right<< setw(29)<< getRandomCard();
+	cout << left << setw(11) << "Casino Card:" << setfill('-') //setfill to reset the fill characters
+		<< setfill('-')<< right<< setw(29) << getRandomCard();
 
 	cout <<endl<< endl << setfill('*') << setw(40) << " ";
 
