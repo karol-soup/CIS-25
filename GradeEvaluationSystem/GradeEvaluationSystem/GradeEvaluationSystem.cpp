@@ -13,10 +13,10 @@ int main()
 	if (score < 60) {
 		cout << "Fail";
 	}
-	else if (score >= 60 && score < 69) {
+	else if (score >= 60 && score <= 69) {
 		cout << "Pass";
 	}
-	else if (score > 70 && score < 89) {
+	else if (score >= 70 && score <= 89) {
 		cout << "Good";
 	}
 	else {
