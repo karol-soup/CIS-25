@@ -20,7 +20,6 @@ int main()
 
 	convertedAmount = convertUnit(intoFl(amount,startUnit), desiredUnit);
 	displayResult(convertedAmount,amount, startUnit, desiredUnit);
-
 	
 	return 0;
 }

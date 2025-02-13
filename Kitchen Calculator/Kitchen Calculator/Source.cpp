@@ -66,7 +66,6 @@ double intoFl(double amount, int sUnit) {
 	else return -1;
 
 }
-
 double convertUnit(double floz, int dUnit) {
 	if (dUnit == 1) return floz / 8; //fl to cups
 	if (dUnit == 2) return floz * 2;// to tbs
