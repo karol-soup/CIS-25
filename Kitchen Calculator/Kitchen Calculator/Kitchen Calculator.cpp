@@ -1,7 +1,13 @@
 
 #include <iostream>
 #include <iomanip>
-#include "Kitchen Calculator.h"
+#include "display.h"
+#include "inputAmount.h"
+#include "inputStart.h"
+#include "inputDesired.h"
+#include "intoFL.h"
+#include "convertUnit.h"
+#include "displayResult.h"
 
 using namespace std;
 
@@ -18,11 +24,12 @@ int main()
 	startUnit = inputStart(startUnit);
 	desiredUnit = inputDesired(desiredUnit);
 
-	convertedAmount = convertUnit(intoFl(amount,startUnit), desiredUnit);
+	convertedAmount = convertUnit(intoFL(amount,startUnit), desiredUnit);
 	displayResult(convertedAmount,amount, startUnit, desiredUnit);
 	
 	return 0;
 }
+
 
 
 
