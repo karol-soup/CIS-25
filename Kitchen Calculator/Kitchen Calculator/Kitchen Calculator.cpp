@@ -13,7 +13,6 @@ using namespace std;
 
 int main()
 {
-	
 	double amount = 0,
 	convertedAmount = 0;
 	int startUnit = 0, desiredUnit = 0;
