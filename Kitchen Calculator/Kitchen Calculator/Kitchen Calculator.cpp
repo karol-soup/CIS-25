@@ -1,13 +1,13 @@
 
 #include <iostream>
 #include <iomanip>
-#include "utils/convertedUnit.h"
+#include "convertUnit.h"
 #include "display.h"
-#include "utils/displayResult.h"
-#include "utils./inputAmount.hpp"
-#include "utils/inputDesired.hpp"
-#include "utils/intoFL.hpp"
-#include "utils/inputStart.hpp"
+#include "displayResult.h"
+#include "inputAmount.h"
+#include "getValidInput.h"
+#include "intoFL.h"
+
 
 using namespace std;
 
@@ -21,8 +21,8 @@ int main()
 	display();
 
     amount = inputAmount(amount);
-	startUnit = inputStart(startUnit);
-	desiredUnit = inputDesired(desiredUnit);
+	startUnit = getValidInput(startUnit);
+	desiredUnit = getValidInput(desiredUnit);
 
 	convertedAmount = convertUnit(intoFL(amount,startUnit), desiredUnit);
 	displayResult(convertedAmount,amount, startUnit, desiredUnit);
