@@ -5,7 +5,8 @@
 #include "display.h"
 #include "displayResult.h"
 #include "inputAmount.h"
-#include "getValidInput.h"
+#include "inputDesired.h"
+#include "inputStart.h"
 #include "intoFL.h"
 
 
@@ -21,8 +22,8 @@ int main()
 	display();
 
     amount = inputAmount(amount);
-	startUnit = getValidInput(startUnit);
-	desiredUnit = getValidInput(desiredUnit);
+	startUnit = inputStart(startUnit);
+	desiredUnit = inputDesired(desiredUnit);
 
 	convertedAmount = convertUnit(intoFL(amount,startUnit), desiredUnit);
 	displayResult(convertedAmount,amount, startUnit, desiredUnit);
