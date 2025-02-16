@@ -6,11 +6,11 @@
 using namespace std;
 
 void displayResult(double convertedAmount, double amount, int sUnit, int dUnit) {
-	const int SIZE = 4;
-	string units[SIZE]{ "cups","tbsp","tsp","FL OZ" };
+
+	string units[]{ "cups","tbsp","tsp","FL OZ" };
 	string dsUnit;
 	string ddUnit;
-	for (int i = 0; i < SIZE; i++) {
+	for (int i = 0; i < size(units); i++) {
 		if (sUnit == (i + 1)) {
 			dsUnit = units[i];
 		}
