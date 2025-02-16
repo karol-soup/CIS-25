@@ -19,7 +19,7 @@ void displayResult(double convertedAmount, double amount, int sUnit, int dUnit) 
 		}
 	}
 	cout << endl;
-	cout << "Convesion:" << endl;
+	cout << "Conversion:" << endl;
 	cout << amount << " " << dsUnit << " = " << fixed << setprecision(2) << convertedAmount << " " << ddUnit << endl;
 
 }
