@@ -14,6 +14,7 @@ USER INPUT
 My input functions utilize while loops to ensure the input is valid. By using if statements and functions such as cin.fail(), cin.clear(), and cin.ignore, I can check if user input is a double or int, and then I check certain conditions after that. 
 
 CONVERSION
+
 When calling convertUnit I call intoFL, I do this so there is a base unit that makes conversion simpler. 
 The program then converts the amount to fluid ounces using if statements. 
 To display the conversion I utilize strings, arrays, for loops, and if statements, in order to convert ints to strings and that's how I am able to display the conversion.  
