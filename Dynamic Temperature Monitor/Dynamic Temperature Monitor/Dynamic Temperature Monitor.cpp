@@ -3,6 +3,8 @@
 #include<vector>
 using namespace std;
 
+void highestTemp(int [], int, int);
+
 int main() {
 
 	int size;//n input by user
@@ -46,31 +48,32 @@ int main() {
 	for (int i = 0; i < size; i++) {
 		cout << *(tempertures + i)<<",";
 	}
-	cout << ']';
+	cout << ']'<<endl;
 
+	int windowSize = 3;
+	cout << "highest temp for windowsize 3: "<<endl;
+	highestTemp(tempertures, size, windowSize);
 
 		delete[] tempertures;
 		tempertures = nullptr;
 	return 0;
 }
 
-/*
-input: tempurture readings
-input K(last hours k)
 
-void sort(int numbers[], int size) {//bubble sort
-	for (int i = 0; i < size - 1; i++) {
-		for (int j = 0; j < size-1-i; j++) {
-			if (numbers[i] > numbers[j+1]) {
-				swap(numbers, i, j+1);
+void highestTemp(int numbers[], int size, int windowSize) {
+	//                   bounds checking
+	for (int i = 0; i < size-windowSize; i++) {
+		cout << "Window " << (i + 1) << " :" << endl;
+		// assume max temp=first i from window
+		int maxTemp = numbers[i];
+		//              checking from that window
+		for (int j = 1; j < windowSize; j++) {
+			if (numbers[j+i] > maxTemp) {
+				maxTemp = numbers[j+i];
 			}
+	
 		}
+		cout << "maxtemp " << maxTemp << endl;
 	}
 }
-void swap(int numbers[], int i, int j) {
-	int temp = numbers[i];
-	numbers[i] = numbers[j];
-	numbers[j] = temp;
-}
 
-*/
