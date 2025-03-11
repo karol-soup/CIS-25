@@ -1,6 +1,7 @@
 ﻿
 #include<iostream>
 #include<vector>
+#include<cstdlib>
 using namespace std;
 
 void highestTemp(int [], int, int);
@@ -18,7 +19,7 @@ int main() {
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Enter valid input." << endl;
 		}
-		else if (size < 0 || size>100'000) {
+		else if (size < 1 || size>100'000) {
 			cout << "Must be between 1 - 100,000." << endl;
 		}
 		else break;
@@ -26,7 +27,7 @@ int main() {
 		
 	//created an array using dma creatingan array sized by user
 	tempertures = new int[size];
-	cout << "Enter your tempeture readings:" << endl;
+	cout << "Enter your tempeture readings:"<<endl;
 	
 	
 	for (int i = 0; i < size; i++) {
@@ -44,14 +45,33 @@ int main() {
 	
 	}
 
+	system("cls");//to clear the output bc it looked ugly
+
 	cout << "Tempertures = [";
 	for (int i = 0; i < size; i++) {
-		cout << *(tempertures + i)<<",";
+		cout << *(tempertures + i);
+		if (i < size - 1) {
+			cout << ",";
+		}
 	}
 	cout << ']'<<endl;
 
-	int windowSize = 3;
-	cout << "highest temp for windowsize 3: "<<endl;
+	int windowSize = 0;
+	while (true) {
+		cout << "Enter your windowsize: ";
+		cin >> windowSize;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Enter valid input." << endl;
+		}
+		else if (windowSize < 1 || windowSize>size) {
+			cout << "Must be between 1 - "<<size << endl;
+		}
+		else break;
+	}
+
+
 	highestTemp(tempertures, size, windowSize);
 
 		delete[] tempertures;
@@ -61,19 +81,24 @@ int main() {
 
 
 void highestTemp(int numbers[], int size, int windowSize) {
-	//                   bounds checking
-	for (int i = 0; i < size-windowSize; i++) {
-		cout << "Window " << (i + 1) << " :" << endl;
+
+	cout << "Highest temperture Readings = [";
+	// <=  to read last element too     bounds checking
+	for (int i = 0; i <= size-windowSize; i++) {
+
 		// assume max temp=first i from window
-		int maxTemp = numbers[i];
+		int maxTemp = *(numbers+ i);
 		//              checking from that window
 		for (int j = 1; j < windowSize; j++) {
-			if (numbers[j+i] > maxTemp) {
-				maxTemp = numbers[j+i];
+			if (numbers[j + i] > maxTemp) {
+				maxTemp = *(numbers + (j + i));
 			}
-	
 		}
-		cout << "maxtemp " << maxTemp << endl;
+		cout << maxTemp;
+		if (i < (size - windowSize)) {
+			cout << ",";
+		}
 	}
+	cout << "]" << endl;
 }
 
