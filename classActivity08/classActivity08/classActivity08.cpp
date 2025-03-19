@@ -26,7 +26,7 @@ int main()
 	customer1.name = getval::getName();
 	customer1.email = getval::getEmail();
 	customer1.address = getval::getAddress();
-
+	 
 	cout << customer1.name << endl;
 	cout << customer1.email << endl;
 	cout << customer1.address.street << endl;
