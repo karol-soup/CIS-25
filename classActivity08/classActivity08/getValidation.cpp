@@ -6,7 +6,7 @@
 using namespace std;
 
 
-namespace getval {
+namespace getval { 
 	string getName() { 
 		string input;
 		while (true) {

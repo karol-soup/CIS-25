@@ -22,5 +22,5 @@ namespace getval {
 	 
 	string getName();
 	string getEmail();
-	Address getAddress();
+	Address getAddress(); 
 }
