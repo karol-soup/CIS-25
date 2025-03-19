@@ -10,7 +10,7 @@ namespace getval {
 
 	
 
-	string getName() {
+	string getName() { 
 		string input;
 		while (true) {
 			cout << "Enter your name:  " << endl;

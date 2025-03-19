@@ -19,7 +19,7 @@ namespace getval {
 		Address address; //nested  address structure within customer
 
 	};
-
+	 
 	string getName();
 	string getEmail();
 	Address getAddress();

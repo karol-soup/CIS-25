@@ -19,9 +19,6 @@ using namespace std;
 
 
 
-
-
-
 int main()
 {
 	getval:: Customer customer1;
