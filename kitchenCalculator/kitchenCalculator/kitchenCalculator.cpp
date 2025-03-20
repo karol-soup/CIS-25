@@ -3,9 +3,9 @@
 #include <iostream>
 #include <iomanip>
 #include "utils/convertedUnit.hpp"
-#include "display.hpp"
+#include "utils/display.hpp"
 #include "utils/displayResult.hpp"
-#include "utils./inputAmount.hpp"
+#include "utils/inputAmount.hpp"
 #include "utils/inputDesired.hpp"
 #include "utils/intoFL.hpp"
 #include "utils/inputStart.hpp"
@@ -21,12 +21,12 @@ int main()
 
 	display();
 
-	//amount = inputAmount(amount);
-	//startUnit = inputStart(startUnit);
-	//desiredUnit = inputDesired(desiredUnit);
+	amount = inputAmount(amount);
+	startUnit = inputStart(startUnit);
+	desiredUnit = inputDesired(desiredUnit);
 
-	//convertedAmotunt = convertUnit(intoFl(amount, startUnit), desiredUnit);
-	//displayResult(convertedAmount, amount, startUnit, desiredUnit);
+	convertedAmotunt = convertUnit(intoFl(amount, startUnit), desiredUnit);
+	displayResult(convertedAmount, amount, startUnit, desiredUnit);
 
 	return 0;
 }

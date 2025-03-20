@@ -31,7 +31,7 @@ int main()
 	cout << customer1.email << endl;
 	cout << customer1.address.street << endl;
 	cout << customer1.address.city << endl;
-	cout << customer1.address.zipCode << endl;
+	cout << customer1.address.zipCode << endl; 
 
 	return 0;
 }
