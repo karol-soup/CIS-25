@@ -17,7 +17,7 @@ namespace getval {
 			}
 			else {
 				cout << "Invalid input" << endl;
-			}
+			} 
 		}
 
 	}
