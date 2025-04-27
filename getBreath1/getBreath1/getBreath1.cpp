@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 struct Date {
@@ -8,6 +9,8 @@ struct Date {
 	short int day;
 	short int year;
 };
+
+
 istream& operator>>(istream& input, Date& date) {// will manipulate how we recive input
 	char slash;
 	while (true) {
@@ -33,11 +36,19 @@ istream& operator>>(istream& input, Date& date) {// will manipulate how we reciv
 	}
 	return input;
 }
+
 ostream& operator<<(ostream& output, Date& date) {
 	char slash = '/';
 	output << date.month << slash << date.day << slash << date.year;
 
 	return output;
+}
+
+Date getDate() {
+	Date date;
+	cout << "What is today date? (MM/DD/YYYY)\n";
+	cin >> date;
+	return date;
 }
 
 enum Mood {
@@ -54,17 +65,60 @@ struct UserInfo {
 	Mood before;
 	Mood after;
 };
-Date getDate() {
-	Date date;
-	cout << "What is today date? (MM/DD/YYYY)\n";
-	cin >> date;
-	return date;
+
+string getValidName() {
+	string name;
+	cout << "What is your name? \n";
+	while (true) {
+		getline(cin, name);
+		if (name.empty()) {
+			cout << "Invalid input. Please try again.\n";
+		}
+		else if (name.length() > 35) {
+			cout << "Name is exessivly long. No more than 35 character. Please try again.\n";
+		}
+		else {
+			break;
+		}
+	}
+	return name;
 }
+short int getCycle() {
+	short int cycles;
+	cout << "How many breathing cycles would you like to do today?: \n";
+	while (true) {
+		cin >> cycles;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(numeric_limits <streamsize>::max(), '\n');
+			cout << "Invalid input. Please try again. \n";
+			
+		}
+		else if (cycles < 1 || cycles > 15) {
+			cout << "Cycles entered must be between 1-15 \n";
+			
+		}
+		else {
+			break;
+		}
+	}
+	return cycles;
+}
+
+UserInfo getUserInfo() {
+	UserInfo user;
+	user.name = getValidName();
+	user.date = getDate();
+	user.cycle = getCycle();
+	return user;
+}
+
 int main()
 {
 	UserInfo user;
-	user.date = getDate();
+	user = getUserInfo();
+	cout << "You entered: " << user.name;
 	cout << "You entered: " << user.date;
-
+	cout << "You entered: " << user.cycle;
 	return 0;
 }
