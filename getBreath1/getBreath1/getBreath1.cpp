@@ -2,7 +2,37 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_map>
+#include <map>
+#include <chrono>
+#include <thread>
+#include <vector>
+#include <fstream>
 using namespace std;
+using namespace std::chrono_literals;
+
+void countdown(int num) {
+	this_thread::sleep_for(1s);
+	for (int i = num; i >= 1;i--) {
+		cout << i << endl;
+		this_thread::sleep_for(1s);
+	}
+}
+
+void timer(int cycles) {
+
+	for (int i = 0;i < cycles;i++) {
+		cout << "Breath in...4.." << endl;
+		countdown(3);
+
+		cout << "Hold...7.." << endl;
+		countdown(6);
+
+		cout << "Breath out...8.." << endl;
+		countdown(7);
+
+	}
+}
 
 struct Date {
 	short int month;
@@ -66,6 +96,7 @@ struct UserInfo {
 	Mood after;
 };
 
+
 string getValidName() {
 	string name;
 	cout << "What is your name? \n";
@@ -105,20 +136,84 @@ short int getCycle() {
 	return cycles;
 }
 
+Mood getMood() {
+	short int mood;
+	cout << "Using our scale 1-5, how are you feeling at the moment?\n"
+		<< "(1 - Sad, 2 - Frustrated, 3 - Neutral, 4 - Happy, 5 - Calm)\n";
+	while (true) {
+		cin >> mood;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Invalid input. Please try again.\n";
+		}
+		else if (mood > 5 || mood < 1) {
+			cout << "Input must be between 1-5. Please try again.\n";
+		}
+		else break;
+	}
+	
+	return static_cast <Mood>(mood);
+}
+void beginBreathig(const UserInfo& user) {
+	system("cls");
+	timer(user.cycle);
+}
 UserInfo getUserInfo() {
 	UserInfo user;
-	user.name = getValidName();
-	user.date = getDate();
-	user.cycle = getCycle();
-	return user;
+
+	user.name = getValidName();//obtaining name
+	user.date = getDate();// date
+	user.cycle = getCycle();//amount of cycles
+	user.before = getMood(); // mood before
+	beginBreathig(user);//calling breathing timer
+	user.after = getMood(); // mood after breathing
+
+	return user; //returing all object atributes
 }
+
+void logUser(UserInfo& user) {
+	fstream userLog; //creating file
+	userLog.open("userLogs.dat",ios::out | ios::app | ios::binary); //opening file in input mode, and ensuring previos work isnt erased
+
+
+	if (userLog.is_open()) {
+
+		userLog.write(reinterpret_cast<char*>(&user), sizeof(UserInfo));
+	
+		userLog.close();
+	}
+	else {
+		cout << "couldnt open file" << endl;
+	}
+
+	userLog.close();
+}
+
+
 
 int main()
 {
+	map<Mood, string> moodMap{
+		{Sad, "Sad"},
+		{Frustrated, "Frustrated"},
+		{Neutral, "Neutral"},
+		{Happy, "Happy"},
+		{Calm, "Calm"}
+	};
+
 	UserInfo user;
+
 	user = getUserInfo();
-	cout << "You entered: " << user.name;
-	cout << "You entered: " << user.date;
-	cout << "You entered: " << user.cycle;
+
+	cout << "You entered: " << user.name<<endl;
+	cout << "You entered: " << user.date<<endl;
+	cout << "You entered: " << user.cycle<<endl;
+	cout << "You entered: " << moodMap[user.before]<<endl;
+	cout << "You entered: " << moodMap[user.after] << endl;
+
+	logUser(user);
+
+	
 	return 0;
 }
