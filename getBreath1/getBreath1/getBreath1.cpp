@@ -8,14 +8,41 @@
 #include <thread>
 #include <vector>
 #include <fstream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 using namespace std::chrono_literals;
 
+
+shared_ptr<vector<string>> getQuotes() {
+	fstream file;
+	file.open("Quotes.txt", ios::in);
+	string str;
+	auto quotes = make_shared<vector<string>>();
+	if (!file.is_open()) {
+		cout << "File failed to open" << endl;
+		
+	}
+	else {
+		while (getline(file, str))
+			//cout << str << endl;
+			quotes->push_back(str);
+		file.close();
+	}
+	return quotes;
+
+}
+void printQuotes(shared_ptr<vector<string>>quotes) {
+	srand(time(0));
+	int index = rand() % quotes->size();
+	cout << quotes->at(index) << endl;
+}
+
 void countdown(int num) {
-	this_thread::sleep_for(1s);
+	this_thread::sleep_for(1s);// pause for 1 sec
 	for (int i = num; i >= 1;i--) {
 		cout << i << endl;
-		this_thread::sleep_for(1s);
+		this_thread::sleep_for(1s);//pause for 1 sec
 	}
 }
 
@@ -23,7 +50,7 @@ void timer(int cycles) {
 
 	for (int i = 0;i < cycles;i++) {
 		cout << "Breath in...4.." << endl;
-		countdown(3);
+		countdown(3);//counts down
 
 		cout << "Hold...7.." << endl;
 		countdown(6);
@@ -88,6 +115,7 @@ enum Mood {
 	Happy,
 	Calm
 };
+
 struct UserInfo {
 	string name;
 	Date date;
@@ -99,7 +127,7 @@ struct UserInfo {
 
 string getValidName() {
 	string name;
-	cout << "What is your name? \n";
+	cout << "I'm getBreath what's your name?\n";
 	while (true) {
 		getline(cin, name);
 		if (name.empty()) {
@@ -114,9 +142,10 @@ string getValidName() {
 	}
 	return name;
 }
+
 short int getCycle() {
 	short int cycles;
-	cout << "How many breathing cycles would you like to do today?: \n";
+	cout << "How many breathing cycles would you like to do today? \n";
 	while (true) {
 		cin >> cycles;
 		if (cin.fail()) {
@@ -126,7 +155,7 @@ short int getCycle() {
 			
 		}
 		else if (cycles < 1 || cycles > 15) {
-			cout << "Cycles entered must be between 1-15 \n";
+			cout << "Cycles entered must be between 1-15. \n";
 			
 		}
 		else {
@@ -155,15 +184,22 @@ Mood getMood() {
 	
 	return static_cast <Mood>(mood);
 }
+
 void beginBreathig(const UserInfo& user) {
 	system("cls");
+	auto quotes = getQuotes();
+	printQuotes(quotes);
 	timer(user.cycle);
+	system("cls");
 }
+
 UserInfo getUserInfo() {
 	UserInfo user;
-
+	
 	user.name = getValidName();//obtaining name
+
 	user.date = getDate();// date
+
 	user.cycle = getCycle();//amount of cycles
 	user.before = getMood(); // mood before
 	beginBreathig(user);//calling breathing timer
@@ -217,3 +253,4 @@ int main()
 	
 	return 0;
 }
+
