@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 
@@ -21,7 +20,7 @@ double inputAmount(double amount) {
 			// if true will break out of loop
 			break;
 		}
-	
+
 	}
 	return amount;
 }
