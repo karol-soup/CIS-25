@@ -5,12 +5,12 @@ on:
     branches:
       - project1-tests
     paths:
-      - 'Kitchen Calculator/**'
+      - 'Kitchen Calculator/Kitchen Calculator/**'
   pull_request:
     branches:
       - project1-tests
     paths:
-      - 'Kitchen Calculator/**'
+      - 'Kitchen Calculator/Kitchen Calculator/**'
 
 jobs:
   build:
