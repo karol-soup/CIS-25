@@ -1,5 +1,12 @@
 YouTube Video Link--> https://www.youtube.com/watch?v=dtkGWJL14EY
 
+TESTING INSTRUCTIONS 
+--------------------
+cmake -- build .
+# Run the main application
+Debug\main_exec
+# Run unit tests
+Debug\test_exec
 
 Kitchen Calculator 
 ---------------------
