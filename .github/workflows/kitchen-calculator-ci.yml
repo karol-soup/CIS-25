@@ -1,30 +1,47 @@
-name: Kitchen Calculator CI
+name: Cross-Platform CMake Build and Test
 
-on:
-  push:
-    branches:
-      - project1-tests
-    paths:
-      - 'Kitchen Calculator/**'
-  pull_request:
-    branches:
-      - project1-tests
-    paths:
-      - 'Kitchen Calculator/**'
+on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build_and_test:
+    name: Build and Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            build_type: Release
+          - os: windows-latest
+            build_type: Release
+          - os: macos-latest
+            build_type: Release
+
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Set up CMake
-        uses: jwlawson/actions-setup-cmake@v1
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake
 
       - name: Configure CMake
+        shell: bash
         run: |
-          cmake -S "Kitchen Calculator" -B build
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -Dgtest_force_shared_crt=ON \
+            -DBUILD_GMOCK=OFF \
+            -DINSTALL_GTEST=OFF
 
-      - name: Build
+      - name: Build project
+        run: cmake --build build --config ${{ matrix.build_type }}
+
+      - name: Run tests
         run: |
-          cmake --build build
+          cd build
+          ctest --output-on-failure --build-config ${{ matrix.build_type }}
