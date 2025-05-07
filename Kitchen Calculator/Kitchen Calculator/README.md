@@ -1,12 +1,13 @@
 YouTube Video Link--> https://www.youtube.com/watch?v=dtkGWJL14EY
-![CI](https://github.com/karol-soup/CIS-25/actions/workflows/Kitchen%20Calculator/Kitchen%20Calculator/.github/workflows/cross-platform-ci.yml/badge.svg?branch=project1-tests)
+![Kitchen Calculator CI](https://github.com/karol-soup/CIS-25/actions/workflows/kitchen-calculator-ci.yml/badge.svg?branch=project1-tests)
+
 
 TESTING INSTRUCTIONS 
 --------------------
 cmake -- build .
-# Run the main application
+#Run the main application
 Debug\main_exec
-# Run unit tests
+#Run unit tests
 Debug\test_exec
 
 Kitchen Calculator 
