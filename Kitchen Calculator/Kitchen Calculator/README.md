@@ -34,3 +34,5 @@ https://en.cppreference.com/w/cpp/header
 https://cplusplus.com/forum/beginner/250945/
 https://househathaway.com/products/kitchen-measurements-conversion-chart
 
+
+![Kitchen Calculator CI](https://github.com/karol-soup/CIS-25/actions/workflows/kitchen-calculator-ci.yml/badge.svg?branch=project1-tests)
