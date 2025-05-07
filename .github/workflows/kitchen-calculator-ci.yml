@@ -12,10 +12,13 @@ jobs:
         include:
           - os: ubuntu-latest
             build_type: Release
+            compiler: gcc
           - os: windows-latest
             build_type: Release
+            compiler: msbuild
           - os: macos-latest
             build_type: Release
+            compiler: clang
 
     steps:
       - name: Checkout repository with submodules
@@ -23,20 +26,26 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install dependencies (Linux)
-        if: runner.os == 'Linux'
+      - name: Install dependencies (Linux/macOS)
+        if: runner.os == 'Linux' || runner.os == 'macOS'
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential cmake
 
-      - name: Configure CMake
+      - name: Install dependencies (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          choco install cmake
+
+      - name: Configure CMake (Subfolder)
         shell: bash
         run: |
-          cmake -S . -B build \
+          cmake -S "Kitchen Calculator/Kitchen Calculator" -B build \
             -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
             -Dgtest_force_shared_crt=ON \
             -DBUILD_GMOCK=OFF \
-            -DINSTALL_GTEST=OFF
+            -DINSTALL_GTEST=OFF \
+            -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
 
       - name: Build project
         run: cmake --build build --config ${{ matrix.build_type }}
@@ -45,3 +54,4 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure --build-config ${{ matrix.build_type }}
+
