@@ -1,0 +1,33 @@
+name: Kitchen Calculator CI
+
+on:
+  push:
+    branches: [ project1-tests ]
+    paths:
+      - 'Kitchen Calculator/**'
+  pull_request:
+    branches: [ project1-tests ]
+    paths:
+      - 'Kitchen Calculator/**'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: |
+          cd "Kitchen Calculator"
+          cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build Kitchen Calculator
+        run: |
+          cmake --build "Kitchen Calculator/build" --config Release
+
+      - name: Run Tests
+        run: |
+          cd "Kitchen Calculator/build"
+          ctest -C Release --output-on-failure
