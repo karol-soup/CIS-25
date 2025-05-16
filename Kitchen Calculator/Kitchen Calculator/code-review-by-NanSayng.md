@@ -1,8 +1,11 @@
 # Code Review by Nan Sayng
 
 Review for: Karol
+
 Branch reviewed: 'project1-tests'
+
 Review Date: May 15th, 2025
+
 Test cases added
 - TEST(TestInitialInput, ValidInitialAmount)
 - TEST(TestInitialInput, ZeroInitialAmount)
